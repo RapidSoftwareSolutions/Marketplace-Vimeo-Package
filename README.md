@@ -838,3 +838,171 @@ Edit a user
 | userId     | String| Id of the user to act on behalf of (default  = me)
 | outro      | Select| Disable the outro. Currently we only support disabling outros, let us know if you need additional features!
 
+## Vimeo.followUsers
+Follow a list of users
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| userUris   | List  | Id of the users to follow
+| userId     | String| Id of the user to act on behalf of (default  = me)
+
+## Vimeo.getUser
+Get a user
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| userId     | String| Id of the user to act on behalf of (default  = me)
+
+## Vimeo.getUserEmbedPresets
+Get all embed presets a user has created
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| userId     | String| Id of the user to act on behalf of (default  = me)
+| page       | Number| The page number to show.
+| perPage    | Number| Number of items to show on each page. Max 100.
+| query      | String| Search query.
+
+## Vimeo.getUserUploadTicket
+Get a users' upload ticket
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| ticketId   | String| Id of the ticket
+| userId     | String| Id of the user to act on behalf of (default  = me)
+
+## Vimeo.getUserFollowings
+Get all users that a user is following
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| userId     | String| Id of the user to act on behalf of (default  = me)
+| direction  | Select| The direction that the results are sorted.
+| sort       | Select| Technique used to sort the results.
+| page       | Number| The page number to show.
+| perPage    | Number| Number of items to show on each page. Max 100.
+| query      | String| Search query.
+| filter     | Select| Filter to apply to the results.
+
+## Vimeo.getUserFollowers
+Get all users that follow a user
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| userId     | String| Id of the user to act on behalf of (default  = me)
+| direction  | Select| The direction that the results are sorted.
+| sort       | Select| Technique used to sort the results.
+| page       | Number| The page number to show.
+| perPage    | Number| Number of items to show on each page. Max 100.
+| query      | String| Search query.
+
+## Vimeo.getVideosUserAppearsIn
+Get all videos a user appears in
+
+| Field           | Type   | Description
+|-----------------|--------|----------
+| accessToken     | String | Access token received from Vimeo
+| userId          | String | Id of the user to act on behalf of (default  = me)
+| direction       | Select | The direction that the results are sorted.
+| filter          | Select | Filter to apply to the results.
+| filterEmbeddable| Boolean| Choose between only videos that are embeddable, and only videos that are not embeddable.
+| sort            | Select | Technique used to sort the results.
+| page            | Number | The page number to show.
+| perPage         | Number | Number of items to show on each page. Max 100.
+| query           | String | Search query.
+
+## Vimeo.getVideosFromWatchLaterQueue
+Get all videos in a users' Watch Later queue
+
+| Field           | Type   | Description
+|-----------------|--------|----------
+| accessToken     | String | Access token received from Vimeo
+| userId          | String | Id of the user to act on behalf of (default  = me)
+| direction       | Select | The direction that the results are sorted.
+| filter          | Select | Filter to apply to the results.
+| filterEmbeddable| Boolean| Choose between only videos that are embeddable, and only videos that are not embeddable.
+| sort            | Select | Technique used to sort the results.
+| page            | Number | The page number to show.
+| perPage         | Number | Number of items to show on each page. Max 100.
+| query           | String | Search query.
+
+## Vimeo.getVideosFromUserFeed
+Get all videos in a users' feed
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| userId     | String| Id of the user to act on behalf of (default  = me)
+| page       | Number| The page number to show.
+| perPage    | Number| Number of items to show on each page. Max 100.
+| offset     | String| This is necessary for proper pagination. Do not provide this value yourself, just use the pagination links provided in the feed response.
+
+## Vimeo.getVideosWithUserEmbedPreset
+Get all videos with a users' embed preset
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| presetId   | String| Id of the preset
+| userId     | String| Id of the user to act on behalf of (default  = me)
+
+## Vimeo.getUserEmbedPreset
+Get single embed preset
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| presetId   | String| Id of the preset
+| userId     | String| Id of the user to act on behalf of (default  = me)
+
+## Vimeo.getVideosFromUserPortfolio
+Get all videos within a users' portfolio
+
+| Field           | Type   | Description
+|-----------------|--------|----------
+| accessToken     | String | Access token received from Vimeo
+| portfolioId     | String | Id of the portfolio
+| userId          | String | Id of the user to act on behalf of (default  = me)
+| direction       | Select | The direction that the results are sorted.
+| filter          | Select | Filter to apply to the results.
+| filterEmbeddable| Boolean| Choose between only videos that are embeddable, and only videos that are not embeddable.
+| sort            | Select | Technique used to sort the results.
+| page            | Number | The page number to show.
+| perPage         | Number | Number of items to show on each page. Max 100.
+
+## Vimeo.searchUsers
+Search for users
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| direction  | Select| The direction that the results are sorted.
+| sort       | Select| Technique used to sort the results.
+| page       | Number| The page number to show.
+| perPage    | Number| Number of items to show on each page. Max 100.
+| query      | String| Search query.
+
+## Vimeo.followUser
+Follow user
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| followUser | String| Id of the user to follow
+| userId     | String| Id of the user to act on behalf of (default  = me)
+
+## Vimeo.unfollowUser
+Unfollow user
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| Access token received from Vimeo
+| followUser | String| Id of the user to unfollow
+| userId     | String| Id of the user to act on behalf of (default  = me)
+

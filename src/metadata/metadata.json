@@ -3636,6 +3636,792 @@
           "info": "Success"
         }
       ]
+    },
+    {
+      "name": "followUsers",
+      "description": "Follow a list of users",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userUris",
+          "type": "List",
+          "structure": {
+            "name": "userId",
+            "type": "String",
+            "info": "Single user id"
+          },
+          "info": "Id of the users to follow",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUser",
+      "description": "Get a user",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserEmbedPresets",
+      "description": "Get all embed presets a user has created",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserUploadTicket",
+      "description": "Get a users' upload ticket",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ticketId",
+          "type": "String",
+          "info": "Id of the ticket",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserFollowings",
+      "description": "Get all users that a user is following",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "alphabetical"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "online"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserFollowers",
+      "description": "Get all users that follow a user",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "alphabetical"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosUserAppearsIn",
+      "description": "Get all videos a user appears in",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "embeddable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "duration",
+            "likes",
+            "plays"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosFromWatchLaterQueue",
+      "description": "Get all videos in a users' Watch Later queue",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "embeddable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "duration",
+            "likes",
+            "plays"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosFromUserFeed",
+      "description": "Get all videos in a users' feed",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "String",
+          "info": "This is necessary for proper pagination. Do not provide this value yourself, just use the pagination links provided in the feed response.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosWithUserEmbedPreset",
+      "description": "Get all videos with a users' embed preset",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "presetId",
+          "type": "String",
+          "info": "Id of the preset",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserEmbedPreset",
+      "description": "Get single embed preset",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "presetId",
+          "type": "String",
+          "info": "Id of the preset",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosFromUserPortfolio",
+      "description": "Get all videos within a users' portfolio",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "portfolioId",
+          "type": "String",
+          "info": "Id of the portfolio",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "embeddable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "duration",
+            "likes",
+            "plays"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "searchUsers",
+      "description": "Search for users",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "relevant"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "followUser",
+      "description": "Follow user",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "followUser",
+          "type": "String",
+          "info": "Id of the user to follow",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "unfollowUser",
+      "description": "Unfollow user",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "followUser",
+          "type": "String",
+          "info": "Id of the user to unfollow",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
     }
   ]
 }
