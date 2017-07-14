@@ -1,0 +1,3641 @@
+{
+  "package": "Vimeo",
+  "tagline": "Vimeo API",
+  "description": "Vimeo",
+  "image": "http:\/\/logo.clearbit.com\/vimeo.com",
+  "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-Vimeo-Package",
+  "keywords": [
+  ],
+  "accounts": {
+    "domain": "vimeo.com",
+    "credentials": [
+      "clientId",
+      "clientSecret"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getAccessToken",
+      "description": "Get access token",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "Client Id received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "Client secret received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "code",
+          "type": "String",
+          "info": "Code provided by client",
+          "required": true
+        },
+        {
+          "name": "redirectUri",
+          "type": "String",
+          "info": "Redirect uri for your application",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "verifyAccessToken",
+      "description": "Verify user access token",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeAccessToken",
+      "description": "Revoke user access token",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createAlbum",
+      "description": "Create an album",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Album name",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "Album description",
+          "required": true
+        },
+        {
+          "name": "password",
+          "type": "String",
+          "info": "The album's password. Required if privacy=password.",
+          "required": false
+        },
+        {
+          "name": "privacy",
+          "type": "Select",
+          "options": [
+            "anybody",
+            "password"
+          ],
+          "info": "The album's privacy level.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "added_first",
+            "added_last",
+            "alphabetical",
+            "arranged",
+            "comments",
+            "likes",
+            "newest",
+            "oldest",
+            "plays"
+          ],
+          "info": "The default sort order of an album's videos.",
+          "required": false
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserAlbums",
+      "description": "Get all users' albums",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "duration",
+            "alphabetical",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserAlbums",
+      "description": "Get all users' albums",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "duration",
+            "alphabetical",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleAlbum",
+      "description": "Get single users' album",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "albumId",
+          "type": "String",
+          "info": "Id of the album",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateAlbum",
+      "description": "Update existing users' album",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "albumId",
+          "type": "String",
+          "info": "Id of the album",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Album new name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "Album new description",
+          "required": false
+        },
+        {
+          "name": "privacy",
+          "type": "Select",
+          "options": [
+            "anybody",
+            "password"
+          ],
+          "info": "The album's privacy level.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "added_first",
+            "added_last",
+            "alphabetical",
+            "arranged",
+            "comments",
+            "likes",
+            "newest",
+            "oldest",
+            "plays"
+          ],
+          "info": "The default sort order of an album's videos.",
+          "required": false
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addVideoToAlbum",
+      "description": "Add a video to an album",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "albumId",
+          "type": "String",
+          "info": "Id of the album",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAlbumVideos",
+      "description": "Get all videos in the album",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "albumId",
+          "type": "String",
+          "info": "Id of the album",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAlbumSingleVideo",
+      "description": "Check if an album contains a video.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "albumId",
+          "type": "String",
+          "info": "Id of the album",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoFromAlbum",
+      "description": "Delete a video from an album",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "albumId",
+          "type": "String",
+          "info": "Id of the album",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "clearAlbumVideos",
+      "description": "Clear or replace the videos in an album.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "albumId",
+          "type": "String",
+          "info": "Id of the album",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "List",
+          "structure": {
+            "name": "videoId",
+            "type": "String",
+            "info": "single video Id"
+          },
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteAlbum",
+      "description": "Delete an album",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "albumId",
+          "type": "String",
+          "info": "Id of the album",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCategories",
+      "description": "Get all categories",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "last_video_featured_time",
+            "name"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleCategory",
+      "description": "Get a category",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Name of the category",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "categorizeVideo",
+      "description": "Add up to two categories and a subcategory to a video. This is merely a suggestion, and does not ensure that the video will added to the category.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "categories",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkForVideoInCategory",
+      "description": "Check for a video in a category",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Name of the category",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkUserFollowsCategory",
+      "description": "Check if a user follows a category",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Name of the category",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCategoriesUserFollows",
+      "description": "Get all categories a user follows",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "last_video_featured_time",
+            "name"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCategoriesVideoIsIn",
+      "description": "Get all categories a video is in",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getChannelsForCategory",
+      "description": "Get all channels for a category",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Name of the category",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "followers",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGroupsForCategory",
+      "description": "Get all groups for a category",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Name of the category",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "members",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosInCategory",
+      "description": "Get all videos for a category",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Name of the category",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "embeddable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "duration",
+            "featured",
+            "likes",
+            "plays",
+            "relevant"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "subscribeUserToCategory",
+      "description": "Subscribe a user to a category",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Name of the category",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "unsubscribeUserFromCategory",
+      "description": "Unsubscribe a user from a category",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Name of the category",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addVideoToChannel",
+      "description": "Add a video to a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkUserFollowsChannel",
+      "description": "Check if a user follows a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createChannel",
+      "description": "Create new channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the channel",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "Description of the channel",
+          "required": true
+        },
+        {
+          "name": "privacy",
+          "type": "Select",
+          "options": [
+            "anybody",
+            "moderators",
+            "user"
+          ],
+          "info": "The privacy level of the new channel",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateChannel",
+      "description": "Check if a user follows a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the channel",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "Description of the channel",
+          "required": false
+        },
+        {
+          "name": "privacy",
+          "type": "Select",
+          "options": [
+            "anybody",
+            "moderators",
+            "user"
+          ],
+          "info": "The privacy level of the new channel",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideoInChannel",
+      "description": "Check if this channel contains a video.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoFromChannel",
+      "description": "Delete a video from a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleChannel",
+      "description": "Get a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getChannels",
+      "description": "Get all channels",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "followers",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "featured"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getChannelsUserSubscribed",
+      "description": "Get all channels a user is subscribed to",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "followers",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "featured"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getChannelFollowers",
+      "description": "Get all followers of a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "moderators"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosInChannel",
+      "description": "Get all videos for a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "embeddable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "added",
+            "default",
+            "duration",
+            "likes",
+            "plays",
+            "manual",
+            "modified_time"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "subscribeUserToChannel",
+      "description": "Subscribe a user to a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "unsubscribeUserFromChannel",
+      "description": "Unsubscribe a user to a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteChannel",
+      "description": "Delete a channel",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createGroup",
+      "description": "Create new group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the channel",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "Description of the channel",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addVideoToGroup",
+      "description": "Add a video to a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleGroup",
+      "description": "Get a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "If og the group",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkGroupHasVideo",
+      "description": "Check if this group contains a video.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosInGroup",
+      "description": "Get all videos for a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "embeddable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "duration",
+            "likes",
+            "plays"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGroupMembers",
+      "description": "Get all groups a user has joined",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "moderators"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "members",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGroupsUserJoined",
+      "description": "Get all members for a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "moderated"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "joinGroup",
+      "description": "Join a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkUserJoinedGroup",
+      "description": "Check if user has joined a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "leaveGroup",
+      "description": "Leave a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoFromGroup",
+      "description": "Delete a video from a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteGroup",
+      "description": "Delete a group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "Id of the group",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGroups",
+      "description": "Get all groups",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "followers",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "featured"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "likeVideo",
+      "description": "Like a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkSingleUserLikedVideo",
+      "description": "Check if a user has liked a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUsersLikedVideo",
+      "description": "Get all users who have liked this video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosUserHasLiked",
+      "description": "Get all videos a user has liked",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "embeddable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "duration",
+            "likes",
+            "plays"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUsersLikedVideosOnDemandPage",
+      "description": "Get all users who liked videos in an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the video ondemand",
+          "required": true
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "extra",
+            "main",
+            "trailer"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "unlikeVideo",
+      "description": "Unlike a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserSinglePortfolio",
+      "description": "Get a users' portfolio",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "portfolioId",
+          "type": "String",
+          "info": "Id of the portfolio",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserAllPortfolios",
+      "description": "Get all users' portfolios",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "alphabetical"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addTagToVideo",
+      "description": "Add a tag to a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "Tag to add",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "assignTagsToVideo",
+      "description": "Add a tags to a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "Tag to add",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkTagAddedToVideo",
+      "description": "Check if a tag has been added to a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "Tag to check",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteTagFromVideo",
+      "description": "Delete a tag from a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "Tag to delete",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideoTags",
+      "description": "List a videos' tags",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleTag",
+      "description": "Get a tag",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "Tag to get",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosTaggedWithWord",
+      "description": "Get all videos tagged with a specific word",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "info": "Tag to get",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "created_time",
+            "duration",
+            "name"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addVideoToWatchLaterQueue",
+      "description": "Add a video to a users' Watch Later queue",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addVideoToUserPortfolio",
+      "description": "Add a video to a users' portfolio",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "portfolioId",
+          "type": "String",
+          "info": "Id of the portfolio",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkUserHasVideoInWatchLaterQueue",
+      "description": "Check if a user has a video in their Watch Later queue",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkUserFollowingUser",
+      "description": "Check if a user is following another user",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "followingUserId",
+          "type": "String",
+          "info": "Id of the user which is followed",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "completeUserStreamingUpload",
+      "description": "Complete a users' streaming upload",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ticketId",
+          "type": "String",
+          "info": "Id of the ticket",
+          "required": true
+        },
+        {
+          "name": "signature",
+          "type": "String",
+          "info": "The crypto signature of the completed upload.",
+          "required": true
+        },
+        {
+          "name": "videoFileId",
+          "type": "String",
+          "info": "The ID of the uploaded file.",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "pictureId",
+      "description": "Delete a users' picture",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "pictureId",
+          "type": "String",
+          "info": "Id of the picture",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoFromWatchLaterQueue",
+      "description": "Delete a video from a users' Watch Later queue",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoFromUserPortfolio",
+      "description": "Delete a video from a users' portfolio",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "portfolioId",
+          "type": "String",
+          "info": "Id of the portfolio",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkPortfolioContainsVideo",
+      "description": "Check if a portfolio contains a video.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "portfolioId",
+          "type": "String",
+          "info": "Id of the portfolio",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateUser",
+      "description": "Edit a user",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "bio",
+          "type": "String",
+          "info": "The user's bio",
+          "required": false
+        },
+        {
+          "name": "location",
+          "type": "String",
+          "info": "The user's location",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The user's name",
+          "required": false
+        },
+        {
+          "name": "videosPrivacyAdd",
+          "type": "Boolean",
+          "info": "Sets the default add setting for all future videos uploaded by this user. If true, anyone can add the video to an album, channel, or group.",
+          "required": false
+        },
+        {
+          "name": "videosPrivacyComments",
+          "type": "Select",
+          "options": [
+            "anybody",
+            "contacts",
+            "nodoby"
+          ],
+          "info": "Sets the default comment setting for all future videos uploaded by this user. It specifies who can comment on the video.",
+          "required": false
+        },
+        {
+          "name": "videosPrivacyDownload",
+          "type": "Boolean",
+          "info": "Sets the default download setting for all future videos uploaded by this user. If true, the video can be downloaded by any user",
+          "required": false
+        },
+        {
+          "name": "videosPrivacyEmbed",
+          "type": "Select",
+          "options": [
+            "private",
+            "public",
+            "whitelist"
+          ],
+          "info": "Sets the default comment setting for all future videos uploaded by this user. It specifies who can comment on the video.",
+          "required": false
+        },
+        {
+          "name": "videosPrivacyView",
+          "type": "Select",
+          "options": [
+            "anybody",
+            "contacts",
+            "nodoby",
+            "disable",
+            "password",
+            "unlisted",
+            "users"
+          ],
+          "info": "Sets the default comment setting for all future videos uploaded by this user. It specifies who can comment on the video.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateUserEmbedPreset",
+      "description": "Edit a user",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "presetId",
+          "type": "String",
+          "info": "Id of the preset",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "outro",
+          "type": "Select",
+          "options": [
+            "nothing"
+          ],
+          "info": "Disable the outro. Currently we only support disabling outros, let us know if you need additional features!",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
+}
