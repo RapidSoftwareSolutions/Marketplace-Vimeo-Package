@@ -1,10 +1,13 @@
 {
   "package": "Vimeo",
   "tagline": "Vimeo API",
-  "description": "Vimeo",
+  "description": "Vimeo is a video sharing platform that was launched in 2004 by a group of filmmakers.",
   "image": "http:\/\/logo.clearbit.com\/vimeo.com",
   "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-Vimeo-Package",
   "keywords": [
+    "API",
+    "video",
+    "vimeo"
   ],
   "accounts": {
     "domain": "vimeo.com",
@@ -4409,6 +4412,4216 @@
           "name": "userId",
           "type": "String",
           "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addGenreToOnDemandPage",
+      "description": "Add a genre to an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "genreId",
+          "type": "String",
+          "info": "Id of the genre",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addPosterToOnDemandPage",
+      "description": "Add a poster to an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "posterId",
+          "type": "String",
+          "info": "Id of the poster",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addPromotionToOnDemandPage",
+      "description": "Add a promotion to an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "accessType",
+          "type": "Select",
+          "options": [
+            "default",
+            "vip"
+          ],
+          "info": "Promotion access type a purchase option that is not available on the container. \"vip\" promotions will always make the content free, and must be further defined with the download or streamPeriod fields.",
+          "required": false
+        },
+        {
+          "name": "promotionCode",
+          "type": "String",
+          "info": "Promotion code value",
+          "required": true
+        },
+        {
+          "name": "discountType",
+          "type": "Select",
+          "options": [
+            "free",
+            "percent"
+          ],
+          "info": "Describes the type of discount offered by this promo code. Note: When providing an accesstype of \"vip\", this field only accepts the \"free\" discounttype.",
+          "required": false
+        },
+        {
+          "name": "download",
+          "type": "Boolean",
+          "info": "Whether this promotion grants download access to vod content. This is only necessary when not defined on the On Demand Container, and creating promotions with the \"vip\" accesstype and \"buy\" producttype",
+          "required": true
+        },
+        {
+          "name": "endTime",
+          "type": "DatePicker",
+          "info": "The latest time this promotion is valid. If not specified, the promotion will never expire.",
+          "required": false
+        },
+        {
+          "name": "percentOff",
+          "type": "String",
+          "info": "The percentage saved by using this promo code. This field is required, and only applicable if the field discountType is set to percent.",
+          "required": false
+        },
+        {
+          "name": "productType",
+          "type": "Select",
+          "options": [
+            "any",
+            "buy",
+            "buy_episode",
+            "rent",
+            "rent_episode",
+            "subscribe"
+          ],
+          "info": "Restricts the promotion to a particular type of transaction. Defaults to \"any\" when accessType is \"default\", and to \"rent\" if the accessType is \"vip\". Only \"buy\" and \"rent\" are valid if the accessType is \"vip\".",
+          "required": false
+        },
+        {
+          "name": "startTime",
+          "type": "DatePicker",
+          "info": "The earliest time this promotion is valid. If startTime is not specified, it will default to the time the promotion was created.",
+          "required": false
+        },
+        {
+          "name": "streamPeriod",
+          "type": "Select",
+          "options": [
+            "1_week",
+            "1_year",
+            "24_hour",
+            "30_day",
+            "3_month",
+            "48_hour",
+            "6_month",
+            "72_hour"
+          ],
+          "info": "The amount of time a user will have access to the vod content upon redeeming a promo code. This is only necessary when not defined on the On Demand Container, and creating promotions with the \"vip\" accesstype and \"rent\" producttype.",
+          "required": true
+        },
+        {
+          "name": "total",
+          "type": "String",
+          "info": "Number of promotions to generate if type is batch. The amount of uses for the promotion if type is single.",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "Select",
+          "options": [
+            "batch",
+            "single"
+          ],
+          "info": "Type of promotions to use. If the access type is vip, the only possible value for this field is batch.",
+          "required": true
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "info": "If you are creating a batch promotion, you can describe it here. This field will be rejected for single promotions.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addRegionToOnDemandPage",
+      "description": "Add a region to an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "country",
+          "type": "String",
+          "info": "Region to add",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addVideoToOnDemandPage",
+      "description": "Add a video to an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "buyPriceAUD",
+          "type": "String",
+          "info": "The purchase price of this video in AUD.",
+          "required": false
+        },
+        {
+          "name": "buyPriceCAD",
+          "type": "String",
+          "info": "The purchase price of this video in CAD.",
+          "required": false
+        },
+        {
+          "name": "buyPriceCHF",
+          "type": "String",
+          "info": "The purchase price of this video in CHF.",
+          "required": false
+        },
+        {
+          "name": "buyPriceDKK",
+          "type": "String",
+          "info": "The purchase price of this video in DKK.",
+          "required": false
+        },
+        {
+          "name": "buyPriceEUR",
+          "type": "String",
+          "info": "The purchase price of this video in EUR.",
+          "required": false
+        },
+        {
+          "name": "buyPriceGBP",
+          "type": "String",
+          "info": "The purchase price of this video in GBP.",
+          "required": false
+        },
+        {
+          "name": "buyPriceJPY",
+          "type": "String",
+          "info": "The purchase price of this video in JPY.",
+          "required": false
+        },
+        {
+          "name": "buyPriceKRW",
+          "type": "String",
+          "info": "The purchase price of this video in KRW.",
+          "required": false
+        },
+        {
+          "name": "buyPriceNOK",
+          "type": "String",
+          "info": "The purchase price of this video in NOK.",
+          "required": false
+        },
+        {
+          "name": "buyPricePLN",
+          "type": "String",
+          "info": "The purchase price of this video in PLN.",
+          "required": false
+        },
+        {
+          "name": "buyPriceSEK",
+          "type": "String",
+          "info": "The purchase price of this video in SEK.",
+          "required": false
+        },
+        {
+          "name": "buyPriceUSD",
+          "type": "String",
+          "info": "The purchase price of this video in USD.",
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "String",
+          "info": "The position this video will appear in this On Demand's video collection.",
+          "required": false
+        },
+        {
+          "name": "releaseYear",
+          "type": "String",
+          "info": "The video release year.",
+          "required": false
+        },
+        {
+          "name": "rentPriceAUD",
+          "type": "String",
+          "info": "The rental price of this video in AUD.",
+          "required": false
+        },
+        {
+          "name": "rentPriceCAD",
+          "type": "String",
+          "info": "The rental price of this video in CAD.",
+          "required": false
+        },
+        {
+          "name": "rentPriceCHF",
+          "type": "String",
+          "info": "The rental price of this video in CHF.",
+          "required": false
+        },
+        {
+          "name": "rentPriceDKK",
+          "type": "String",
+          "info": "The rental price of this video in DKK.",
+          "required": false
+        },
+        {
+          "name": "rentPriceEUR",
+          "type": "String",
+          "info": "The rental price of this video in EUR.",
+          "required": false
+        },
+        {
+          "name": "rentPriceGBP",
+          "type": "String",
+          "info": "The rental price of this video in GBP.",
+          "required": false
+        },
+        {
+          "name": "rentPriceJPY",
+          "type": "String",
+          "info": "The rental price of this video in JPY.",
+          "required": false
+        },
+        {
+          "name": "rentPriceKRW",
+          "type": "String",
+          "info": "The rental price of this video in KRW.",
+          "required": false
+        },
+        {
+          "name": "rentPriceNOK",
+          "type": "String",
+          "info": "The rental price of this video in NOK.",
+          "required": false
+        },
+        {
+          "name": "rentPricePLN",
+          "type": "String",
+          "info": "The rental price of this video in PLN.",
+          "required": false
+        },
+        {
+          "name": "rentPriceSEK",
+          "type": "String",
+          "info": "The rental price of this video in SEK.",
+          "required": false
+        },
+        {
+          "name": "rentPriceUSD",
+          "type": "String",
+          "info": "The rental price of this video in USD.",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "Select",
+          "options": [
+            "extra",
+            "main",
+            "trailer"
+          ],
+          "info": "The type of video you are associating with the On Demand page.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkPurchasedOnDemandPage",
+      "description": "Check if user have purchased an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createBackgroundForOnDemandPage",
+      "description": "Create a new background for an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "backgroundId",
+          "type": "String",
+          "info": "Id of the background",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createOnDemandPage",
+      "description": "Create an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "acceptedCurrencies",
+          "type": "List",
+          "structure": {
+            "name": "currency",
+            "type": "String",
+            "info": "Single currency"
+          },
+          "info": "Array of accepted currencies.",
+          "required": false
+        },
+        {
+          "name": "buyActive",
+          "type": "Boolean",
+          "info": "Required if rent.active is false.",
+          "required": false
+        },
+        {
+          "name": "buyDownload",
+          "type": "Boolean",
+          "info": "If download is available to purchasers who buy the film.",
+          "required": false
+        },
+        {
+          "name": "buyPriceAUD",
+          "type": "String",
+          "info": "The purchase price of this video in AUD.",
+          "required": false
+        },
+        {
+          "name": "buyPriceCAD",
+          "type": "String",
+          "info": "The purchase price of this video in CAD.",
+          "required": false
+        },
+        {
+          "name": "buyPriceCHF",
+          "type": "String",
+          "info": "The purchase price of this video in CHF.",
+          "required": false
+        },
+        {
+          "name": "buyPriceDKK",
+          "type": "String",
+          "info": "The purchase price of this video in DKK.",
+          "required": false
+        },
+        {
+          "name": "buyPriceEUR",
+          "type": "String",
+          "info": "The purchase price of this video in EUR.",
+          "required": false
+        },
+        {
+          "name": "buyPriceGBP",
+          "type": "String",
+          "info": "The purchase price of this video in GBP.",
+          "required": false
+        },
+        {
+          "name": "buyPriceJPY",
+          "type": "String",
+          "info": "The purchase price of this video in JPY.",
+          "required": false
+        },
+        {
+          "name": "buyPriceKRW",
+          "type": "String",
+          "info": "The purchase price of this video in KRW.",
+          "required": false
+        },
+        {
+          "name": "buyPriceNOK",
+          "type": "String",
+          "info": "The purchase price of this video in NOK.",
+          "required": false
+        },
+        {
+          "name": "buyPricePLN",
+          "type": "String",
+          "info": "The purchase price of this video in PLN.",
+          "required": false
+        },
+        {
+          "name": "buyPriceSEK",
+          "type": "String",
+          "info": "The purchase price of this video in SEK.",
+          "required": false
+        },
+        {
+          "name": "buyPriceUSD",
+          "type": "String",
+          "info": "The purchase price of this video in USD.",
+          "required": false
+        },
+        {
+          "name": "contentRating",
+          "type": "List",
+          "structure": {
+            "name": "rating",
+            "type": "String",
+            "info": "Single rating"
+          },
+          "info": "Rating of the page",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "The On Demand page description.",
+          "required": true
+        },
+        {
+          "name": "domainLink",
+          "type": "String",
+          "info": "The On Demand page's custom domain.",
+          "required": false
+        },
+        {
+          "name": "episodesBuyActive",
+          "type": "Boolean",
+          "info": "Whether episodes can be bought",
+          "required": false
+        },
+        {
+          "name": "episodesBuyDownload",
+          "type": "Boolean",
+          "info": "If download is available to purchasers who buy the episode.",
+          "required": false
+        },
+        {
+          "name": "episodesBuyPriceUSD",
+          "type": "String",
+          "info": "Required if episodes.buy.active is true.",
+          "required": false
+        },
+        {
+          "name": "episodesRentActive",
+          "type": "Boolean",
+          "info": "Whether episodes can be rented",
+          "required": false
+        },
+        {
+          "name": "episodesRentPeriod",
+          "type": "String",
+          "info": "Required if episodes.rent.active is true.",
+          "required": false
+        },
+        {
+          "name": "episodesRentPriceUSD",
+          "type": "String",
+          "info": "Required if episodes.rent.active is true. Only applicable if this On Demand page is a series. This is the default price for each individual episode.",
+          "required": false
+        },
+        {
+          "name": "link",
+          "type": "String",
+          "info": "The custom string to use in this On Demand page's Vimeo URL.",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The On Demand page name.",
+          "required": true
+        },
+        {
+          "name": "rentActive",
+          "type": "String",
+          "info": "Required if buy.active is false.",
+          "required": false
+        },
+        {
+          "name": "rentPeriod",
+          "type": "String",
+          "info": "Required if rent.active is true.",
+          "required": false
+        },
+        {
+          "name": "rentPriceAUD",
+          "type": "String",
+          "info": "The rental price of this video in AUD.",
+          "required": false
+        },
+        {
+          "name": "rentPriceCAD",
+          "type": "String",
+          "info": "The rental price of this video in CAD.",
+          "required": false
+        },
+        {
+          "name": "rentPriceCHF",
+          "type": "String",
+          "info": "The rental price of this video in CHF.",
+          "required": false
+        },
+        {
+          "name": "rentPriceDKK",
+          "type": "String",
+          "info": "The rental price of this video in DKK.",
+          "required": false
+        },
+        {
+          "name": "rentPriceEUR",
+          "type": "String",
+          "info": "The rental price of this video in EUR.",
+          "required": false
+        },
+        {
+          "name": "rentPriceGBP",
+          "type": "String",
+          "info": "The rental price of this video in GBP.",
+          "required": false
+        },
+        {
+          "name": "rentPriceJPY",
+          "type": "String",
+          "info": "The rental price of this video in JPY.",
+          "required": false
+        },
+        {
+          "name": "rentPriceKRW",
+          "type": "String",
+          "info": "The rental price of this video in KRW.",
+          "required": false
+        },
+        {
+          "name": "rentPriceNOK",
+          "type": "String",
+          "info": "The rental price of this video in NOK.",
+          "required": false
+        },
+        {
+          "name": "rentPricePLN",
+          "type": "String",
+          "info": "The rental price of this video in PLN.",
+          "required": false
+        },
+        {
+          "name": "rentPriceSEK",
+          "type": "String",
+          "info": "The rental price of this video in SEK.",
+          "required": false
+        },
+        {
+          "name": "rentPriceUSD",
+          "type": "String",
+          "info": "The rental price of this video in USD.",
+          "required": false
+        },
+        {
+          "name": "subscriptionMonthlyActive",
+          "type": "Boolean",
+          "info": "Required if rent.active and buy.active are false.",
+          "required": false
+        },
+        {
+          "name": "subscriptionMonthlyPriceUSD",
+          "type": "String",
+          "info": "Required if subscription.active is true.",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "Select",
+          "options": [
+            "film",
+            "series"
+          ],
+          "info": "The On Demand page type.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteGenreFromOnDemandPage",
+      "description": "Delete a genre from an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "genreId",
+          "type": "String",
+          "info": "Id of the genre",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteRegionsFromOnDemandPage",
+      "description": "Delete regions from an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "country",
+          "type": "List",
+          "structure": {
+            "name": "country",
+            "type": "String",
+            "info": "Single country"
+          },
+          "info": "Regions to remove",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteSingleRegionFromOnDemandPage",
+      "description": "Delete a region from an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "country",
+          "type": "String",
+          "info": "Region to remove",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoFromOnDemandPage",
+      "description": "Delete a video from an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteOnDemandPage",
+      "description": "Delete an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteOnDemandPageBackground",
+      "description": "Delete a background from an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "backgroundId",
+          "type": "String",
+          "info": "Id of the background",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteOnDemandPagePromotion",
+      "description": "Delete a promotion from an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "promotionId",
+          "type": "String",
+          "info": "Id of the promotion",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateOnDemandPage",
+      "description": "Edit an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "link",
+          "type": "String",
+          "info": "The custom string to use in this On Demand page's Vimeo URL.",
+          "required": false
+        },
+        {
+          "name": "preorderActive",
+          "type": "Boolean",
+          "info": "If set to true, you will enable pre-orders on the On Demand page.",
+          "required": false
+        },
+        {
+          "name": "preorderPublishTime",
+          "type": "Boolean",
+          "info": "Required if \"preorder.active\" is true. The time that the On Demand page will be published.",
+          "required": false
+        },
+        {
+          "name": "publishActive",
+          "type": "Boolean",
+          "info": "If set to true, you will publish the On Demand page.",
+          "required": false
+        },
+        {
+          "name": "publishWhenReady",
+          "type": "Boolean",
+          "info": "This On Demand page will be automatically published when all videos are finished transcoding.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateOnDemandPageBackground",
+      "description": "Edit an On Demand pages' background",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "backgroundId",
+          "type": "String",
+          "info": "Id of the background",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateOnDemandPagePoster",
+      "description": "Edit an On Demand pages' poster",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "posterId",
+          "type": "String",
+          "info": "Id of the poster",
+          "required": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean",
+          "info": "Set this picture as the active picture.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSeasonOfOnDemandPage",
+      "description": "Get a season of an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "seasonId",
+          "type": "String",
+          "info": "Id of the season",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUserOnDemandPages",
+      "description": "Get a users' On Demand pages",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "film",
+            "series"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "added",
+            "modified_time",
+            "name",
+            "publish.time",
+            "rating"
+          ],
+          "info": "The default sort order of an album's videos.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideoInOnDemandPage",
+      "description": "Check if an On Demand page contains a video.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAllOnDemandGenres",
+      "description": "Get all On Demand genres",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAllOnDemandPagesWithinGenre",
+      "description": "Get all On Demand pages within a genre",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "genreId",
+          "type": "String",
+          "info": "Id of the genre",
+          "required": true
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "country",
+            "my_region"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "name",
+            "publish.time",
+            "videos"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAllOnDemandRegions",
+      "description": "Get all On Demand regions",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCodesForOnDemandPagesPromotion",
+      "description": "Get all codes for an On Demand pages' promotion",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "promotionId",
+          "type": "String",
+          "info": "Id of the promotion",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAllPostersForOnDemandPage",
+      "description": "Get all posters for an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosInSeasonOfOnDemandPage",
+      "description": "Get all videos in a season of an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "seasonId",
+          "type": "String",
+          "info": "Id of the season",
+          "required": true
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "viewable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "default",
+            "manual",
+            "name",
+            "purchase_time",
+            "release_date"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAllVideosInOnDemandPage",
+      "description": "Get all videos in an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "all",
+            "buy",
+            "expiring_soon",
+            "extra",
+            "main",
+            "main.viewable",
+            "rent",
+            "trailer",
+            "unwatched",
+            "viewable",
+            "watched"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "default",
+            "episode",
+            "manual",
+            "name",
+            "purchase_time",
+            "release_date"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getOnDemandSingleGenre",
+      "description": "Get an On Demand genre",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "genreId",
+          "type": "String",
+          "info": "Id of the genre",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleOnDemandPage",
+      "description": "Get an On Demand single page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getOnDemandPageSingleBackground",
+      "description": "Get an On Demand page background",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "backgroundId",
+          "type": "String",
+          "info": "Id of the background",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getOnDemandPageInGenre",
+      "description": "Get an On Demand page in a genre",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "genreId",
+          "type": "String",
+          "info": "Id of the genre",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getOnDemandPageBackgrounds",
+      "description": "Get an On Demand pages' backgrounds",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkOnDemandPageHasGenre",
+      "description": "Check whether an On Demand page has a genre.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "genreId",
+          "type": "String",
+          "info": "Id of the genre",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getOnDemandPagesPoster",
+      "description": "Get an On Demand pages' poster",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "posterId",
+          "type": "String",
+          "info": "Id of the poster",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getOnDemandPagesPromotion",
+      "description": "Get an On Demand pages' promotion",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "promotionId",
+          "type": "String",
+          "info": "Id of the promotion",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkOnDemandPageHasRegion",
+      "description": "Get an On Demand pages' region",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "country",
+          "type": "String",
+          "info": "Region to add",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getOnDemandSingleRegion",
+      "description": "Get an On Demand region",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "country",
+          "type": "String",
+          "info": "Region to add",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGenresOfOnDemandPage",
+      "description": "Get genres of an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getRegionsForOnDemandPage",
+      "description": "Get regions of an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSeasonsInOnDemandPage",
+      "description": "Get seasons in an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "viewable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "manual"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUsersOnDemandPurchasesAndRentals",
+      "description": "Get users' On Demand purchases and rentals",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "all",
+            "expiring_soon",
+            "film",
+            "important",
+            "purchased",
+            "rented",
+            "series",
+            "subscription",
+            "unwatched",
+            "watched"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "added",
+            "alphabetical",
+            "date",
+            "name",
+            "purchase_time",
+            "rating",
+            "release_date"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addRegionToOnDemandPage",
+      "description": "Add a region to an On Demand page",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "ondemandId",
+          "type": "String",
+          "info": "Id of the ondemand page",
+          "required": true
+        },
+        {
+          "name": "countryList",
+          "type": "List",
+          "structure": {
+            "name": "country",
+            "type": "String",
+            "info": "Single country"
+          },
+          "info": "Regions to remove",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addCommentToVideo",
+      "description": "Add a comment to a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "info": "Text of the comment",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addCreditToVideo",
+      "description": "Add a credit to a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "info": "The email address of the person being credited.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The name address of the person being credited.",
+          "required": true
+        },
+        {
+          "name": "role",
+          "type": "String",
+          "info": "The role address of the person being credited.",
+          "required": true
+        },
+        {
+          "name": "userUri",
+          "type": "String",
+          "info": "The userUri address of the person being credited.",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addReplyToCommentOnVideo",
+      "description": "Add a reply to comment to a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "info": "Text of the comment",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Id of the comment",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addTextTrackToVideo",
+      "description": "Add a text track to a video.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "language",
+          "type": "String",
+          "info": "Text track language",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Text track name",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "Select",
+          "options": [
+            "captions",
+            "chapters",
+            "descriptions",
+            "metadata",
+            "subtitles"
+          ],
+          "info": "Text track type",
+          "required": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean",
+          "info": "Text tracks marked active will be visible to other users, and will show up in the player. Only one text track per language can be active.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "allowUsersViewPrivateVideo",
+      "description": "Allow a list of users to view a private video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userUris",
+          "type": "List",
+          "structure": {
+            "name": "userId",
+            "type": "String",
+            "info": "Single user id"
+          },
+          "info": "An array of either user URI's or user IDs.",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "allowSingleUserToViewPrivateVideo",
+      "description": "Allow a single user to view a private video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "allowVideoEmbedding",
+      "description": "Allow embedding of a video on a domain",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "domain",
+          "type": "String",
+          "info": "Domain to allow embedding",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "assignEmbedPresetToVideo",
+      "description": "Assign an embed preset to a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "presetId",
+          "type": "String",
+          "info": "Id of the preset",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkUserOwnsVideo",
+      "description": "Check if a user owns a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createVideoThumbnail",
+      "description": "Check if a user owns a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean",
+          "info": "Make this picture the default picture if you have created a picture response from video at given time offset.",
+          "required": false
+        },
+        {
+          "name": "time",
+          "type": "String",
+          "info": "If set will create a picture resource from video at given time offset.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteCommentFromVideo",
+      "description": "Delete a comment from a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Id of the comment",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteCreditOnVideo",
+      "description": "Delete a credit from a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "creditId",
+          "type": "String",
+          "info": "Id of the credit",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteUsersEntireWatchHistory",
+      "description": "Delete a users' entire watch history",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideo",
+      "description": "Delete a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoFromWatchHistory",
+      "description": "Delete a video from your watch history",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoTextTrack",
+      "description": "Delete a text track from a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "texttrackId",
+          "type": "String",
+          "info": "Id of the text track",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteVideoThumbnail",
+      "description": "Delete a thumbnail for video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "pictureId",
+          "type": "String",
+          "info": "Id of the thumbnail",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "disallowUserFromViewingPrivateVideo",
+      "description": "Disallow a single user to view a private video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "disallowVideoEmbedding",
+      "description": "Disallow embedding of a video on a domain",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "domain",
+          "type": "String",
+          "info": "Domain to disallow embedding",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "editCommentOnVideo",
+      "description": "Edit a comment on a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "info": "Text of the comment",
+          "required": false
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Id of the comment",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "editCreditOnVideo",
+      "description": "Edit a credit on a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "info": "Text of the comment",
+          "required": false
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Id of the comment",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "info": "The email address of the person being credited.",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The name address of the person being credited.",
+          "required": false
+        },
+        {
+          "name": "role",
+          "type": "String",
+          "info": "The role address of the person being credited.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "editVideo",
+      "description": "Edit a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "contentRating",
+          "type": "List",
+          "structure": {
+            "name": "rating",
+            "type": "String",
+            "info": "Single rating"
+          },
+          "info": "Rating of the video",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "The video description.",
+          "required": false
+        },
+        {
+          "name": "embedButtonsEmbed",
+          "type": "Boolean",
+          "info": "Show or hide the embed button.",
+          "required": false
+        },
+        {
+          "name": "embedButtonsFullscreen",
+          "type": "Boolean",
+          "info": "Show or hide the fullscreen button.",
+          "required": false
+        },
+        {
+          "name": "embedButtonsHd",
+          "type": "Boolean",
+          "info": "Show or hide the HD button.",
+          "required": false
+        },
+        {
+          "name": "embedButtonsLike",
+          "type": "Boolean",
+          "info": "Show or hide the like button.",
+          "required": false
+        },
+        {
+          "name": "embedButtonsScaling",
+          "type": "Boolean",
+          "info": "Show or hide the scaling button (shown only in fullscreen mode).",
+          "required": false
+        },
+        {
+          "name": "embedButtonsShare",
+          "type": "Boolean",
+          "info": "Show or hide the share button.",
+          "required": false
+        },
+        {
+          "name": "embedButtonsWatchlater",
+          "type": "Boolean",
+          "info": "Show or hide the watch later button.",
+          "required": false
+        },
+        {
+          "name": "embedColor",
+          "type": "String",
+          "info": "A primary color used by the embed player.",
+          "required": false
+        },
+        {
+          "name": "embedLogosCustomActive",
+          "type": "Boolean",
+          "info": "Show or hide your custom logo.",
+          "required": false
+        },
+        {
+          "name": "embedLogosCustomLink",
+          "type": "String",
+          "info": "A url that your user will navigate to if they click your custom logo.",
+          "required": false
+        },
+        {
+          "name": "embedLogosCustomSticky",
+          "type": "Boolean",
+          "info": "Always show the custom logo, or hide it after time with the rest of the UI.",
+          "required": false
+        },
+        {
+          "name": "embedLogosVimeo",
+          "type": "Boolean",
+          "info": "Show or hide the vimeo logo.",
+          "required": false
+        },
+        {
+          "name": "embedPlaybar",
+          "type": "Boolean",
+          "info": "Show or hide the playbar.",
+          "required": false
+        },
+        {
+          "name": "embedTitleName",
+          "type": "Select",
+          "options": [
+            "hide",
+            "show",
+            "user"
+          ],
+          "info": "Show, hide, or let the user decide if the video title shows on the video",
+          "required": false
+        },
+        {
+          "name": "embedTitleOwner",
+          "type": "Select",
+          "options": [
+            "hide",
+            "show",
+            "user"
+          ],
+          "info": "Show, hide, or let the user decide if the owners information shows on the video.",
+          "required": false
+        },
+        {
+          "name": "embedTitlePortrait",
+          "type": "Select",
+          "options": [
+            "hide",
+            "show",
+            "user"
+          ],
+          "info": "Show, hide, or let the user decide if the owners portrait shows on the video.",
+          "required": false
+        },
+        {
+          "name": "embedVolume",
+          "type": "Boolean",
+          "info": "Show or hide the volume selector.",
+          "required": false
+        },
+        {
+          "name": "externalLinksImdb",
+          "type": "String",
+          "info": "External data from imdb",
+          "required": false
+        },
+        {
+          "name": "externalLinksRottenTomatoes",
+          "type": "String",
+          "info": "External data from rotten tomatoes",
+          "required": false
+        },
+        {
+          "name": "license",
+          "type": "Select",
+          "options": [
+            "by",
+            "by-nc",
+            "by-nc-nd",
+            "by-nc-sa",
+            "by-nd",
+            "by-sa",
+            "cc0"
+          ],
+          "info": "Set the Creative Commons license",
+          "required": false
+        },
+        {
+          "name": "locale",
+          "type": "String",
+          "info": "Set the default language for this video. For a full list of valid languages use the \"/languages?filter=texttracks\" endpoint.",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "The new title for the video",
+          "required": false
+        },
+        {
+          "name": "password",
+          "type": "String",
+          "info": "When you set privacy.view to password, you must provide the password as an additional parameter.",
+          "required": false
+        },
+        {
+          "name": "privacyAdd",
+          "type": "Boolean",
+          "info": "Enable or disable the ability for anyone to add the video to an album, channel, or group.",
+          "required": false
+        },
+        {
+          "name": "privacyComments",
+          "type": "Select",
+          "options": [
+            "anybody",
+            "contacts",
+            "nobody"
+          ],
+          "info": "The privacy for who can comment on the video.",
+          "required": false
+        },
+        {
+          "name": "privacyDownload",
+          "type": "Boolean",
+          "info": "Enable or disable the ability for anyone to download video.",
+          "required": false
+        },
+        {
+          "name": "privacyEmbed",
+          "type": "Select",
+          "options": [
+            "private",
+            "public",
+            "whitelist"
+          ],
+          "info": "The videos new embed settings. Whitelist allows you to define all valid embed domains. Check out our docs for adding and removing domains.",
+          "required": false
+        },
+        {
+          "name": "privacyView",
+          "type": "Select",
+          "options": [
+            "anybody",
+            "contacts",
+            "disable",
+            "nobody",
+            "password",
+            "unlisted",
+            "users"
+          ],
+          "info": "The new privacy setting for the video. Content-type application/json is the only valid type for type \"users\", basic users can not set privacy to unlisted.",
+          "required": false
+        },
+        {
+          "name": "ratingsMpaaRating",
+          "type": "Select",
+          "options": [
+            "g",
+            "nc17",
+            "pg",
+            "pg13",
+            "r",
+            "x"
+          ],
+          "info": "Set MPAA rating for a video.",
+          "required": false
+        },
+        {
+          "name": "ratingsMpaaReason",
+          "type": "Select",
+          "options": [
+            "at",
+            "bn",
+            "n",
+            "s1",
+            "ss",
+            "v"
+          ],
+          "info": "Set MPAA rating reason for a video.",
+          "required": false
+        },
+        {
+          "name": "ratingTvRating",
+          "type": "Select",
+          "options": [
+            "tv-14",
+            "tv-g",
+            "tv-ma",
+            "tv-pg",
+            "tv-y",
+            "tv-y7",
+            "tv-y7-fv"
+          ],
+          "info": "Set TV rating for a video.",
+          "required": false
+        },
+        {
+          "name": "ratingTvReason",
+          "type": "Select",
+          "options": [
+            "d",
+            "fv",
+            "l",
+            "ss",
+            "v"
+          ],
+          "info": "Set TV rating reason for a video.",
+          "required": false
+        },
+        {
+          "name": "reviewLink",
+          "type": "Boolean",
+          "info": "Enable or disable the review page.",
+          "required": false
+        },
+        {
+          "name": "spatialDirectorTimeline",
+          "type": "JSON",
+          "info": "360 director timeline. The arrays in this should include a \"time_code\", \"pitch\", \"yaw\", and optionally \"roll\". For pitch, the minimum allowed is -90, and the max of 90. For yaw, the minimum is 0, and a maximum of 360.",
+          "required": false
+        },
+        {
+          "name": "spatialFieldOfView",
+          "type": "Number",
+          "info": "360 field of view. Default 50, min 30, max 90.",
+          "required": false
+        },
+        {
+          "name": "spatialProjection",
+          "type": "Select",
+          "options": [
+            "cubical",
+            "cylindrical",
+            "dome",
+            "equirectangular",
+            "pyramid"
+          ],
+          "info": "360 spatial projection.",
+          "required": false
+        },
+        {
+          "name": "spatialStereoFormat",
+          "type": "Select",
+          "options": [
+            "left-right",
+            "mono",
+            "top-bottom"
+          ],
+          "info": "360 spatial stereo format.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "editVideoTextTrack",
+      "description": "Edit a video text track",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "texttrackId",
+          "type": "String",
+          "info": "Id of the text track",
+          "required": true
+        },
+        {
+          "name": "language",
+          "type": "String",
+          "info": "Text track language",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Text track name",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "Select",
+          "options": [
+            "captions",
+            "chapters",
+            "descriptions",
+            "metadata",
+            "subtitles"
+          ],
+          "info": "Text track type",
+          "required": false
+        },
+        {
+          "name": "active",
+          "type": "Boolean",
+          "info": "Text tracks marked active will be visible to other users, and will show up in the player. Only one text track per language can be active.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "editVideoThumbnail",
+      "description": "Edit a thumbnail for video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "pictureId",
+          "type": "String",
+          "info": "Id of the thumbnail",
+          "required": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean",
+          "info": "Make this picture the default picture.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideoComment",
+      "description": "Get a comment from a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Id of the comment",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideoCredit",
+      "description": "Get a credit from a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "creditId",
+          "type": "String",
+          "info": "Id of the credit",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleVideo",
+      "description": "Get a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideoTextTrack",
+      "description": "Get a text track from a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "texttrackId",
+          "type": "String",
+          "info": "Id of the text track",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideoThumbnail",
+      "description": "Get a thumbnail for video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "pictureId",
+          "type": "String",
+          "info": "Id of the thumbnail",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideoComments",
+      "description": "Get all comments on a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getDomainsVideoEmbeddedOn",
+      "description": "Get all domains a video can be embedded on",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEmbedPresetsForVideo",
+      "description": "Check if a video has a specific embed preset.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "presetId",
+          "type": "String",
+          "info": "Id of the preset",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getRepliesToCommentOnVideo",
+      "description": "Get all replies to a comment on a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Id of the comment",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTextTracksForVideo",
+      "description": "Get all the text tracks for a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getThumbnailsOnVideo",
+      "description": "Get all the thumbnails for a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUsersCreditedInVideo",
+      "description": "Get all users credited in a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "date",
+            "alphabetical"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getUsersCanViewPrivateVideo",
+      "description": "Get all users that can view a private video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosUserHasWatched",
+      "description": "Get all videos a user has watched",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getVideosUploadedByUser",
+      "description": "Get all videos uploaded by a user",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "embeddable",
+            "app_only",
+            "playable"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "filterPlayable",
+          "type": "Boolean",
+          "info": "Default true. Choose between only videos that are playable, and only videos that are not playable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "duration",
+            "likes",
+            "plays",
+            "default",
+            "modified_time"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        },
+        {
+          "name": "weakSearch",
+          "type": "Boolean",
+          "info": "This forces the query parameter to use a separate search service that includes private videos. It will only perform a partial text search on the video's name. In the future the standard search will include private videos, and this parameter won't be necessary.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "replaceVideoSourceFile",
+      "description": "Get an upload ticket to replace this video file.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "link",
+          "type": "String",
+          "info": "If your upload type is pull, Vimeo will download the video hosted at this public URL. This URL must be valid for at least 24 hours.",
+          "required": false
+        },
+        {
+          "name": "redirectUri",
+          "type": "String",
+          "info": "The app redirect URL. Required for POST upload types.",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "Select",
+          "options": [
+            "POST",
+            "pull",
+            "streaming"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "searchVideos",
+      "description": "Search for videos",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "direction",
+          "type": "Select",
+          "options": [
+            "asc",
+            "desc"
+          ],
+          "info": "The direction that the results are sorted.",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "type": "Select",
+          "options": [
+            "CC",
+            "CC-BY",
+            "CC-BY-NC",
+            "CC-BY-NC-ND",
+            "CC-BY-NC-SA",
+            "CC-BY-ND",
+            "CC-BY-SA",
+            "CC0",
+            "categories",
+            "duration",
+            "in-progress",
+            "minimum_likes",
+            "trending",
+            "upload_date"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        },
+        {
+          "name": "filterEmbeddable",
+          "type": "Boolean",
+          "info": "Choose between only videos that are embeddable, and only videos that are not embeddable.",
+          "required": false
+        },
+        {
+          "name": "filterPlayable",
+          "type": "Boolean",
+          "info": "Default true. Choose between only videos that are playable, and only videos that are not playable.",
+          "required": false
+        },
+        {
+          "name": "sort",
+          "type": "Select",
+          "options": [
+            "alphabetical",
+            "date",
+            "comments",
+            "duration",
+            "likes",
+            "plays",
+            "default",
+            "relevant"
+          ],
+          "info": "Technique used to sort the results.",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "String",
+          "info": "Search query.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "uploadVideo",
+      "description": "Begin the video upload process.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Id of the user to act on behalf of (default  = me)",
+          "required": false
+        },
+        {
+          "name": "link",
+          "type": "String",
+          "info": "If your upload type is pull, Vimeo will download the video hosted at this public URL. This URL must be valid for at least 24 hours.",
+          "required": false
+        },
+        {
+          "name": "redirectUri",
+          "type": "String",
+          "info": "The app redirect URL. Required for POST upload types.",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "Select",
+          "options": [
+            "POST",
+            "pull",
+            "streaming"
+          ],
+          "info": "Filter to apply to the results.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getRelatedVideosToSingleVideo",
+      "description": "View related videos to a video",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "videoId",
+          "type": "String",
+          "info": "Id of the video",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "The page number to show.",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items to show on each page. Max 100.",
           "required": false
         }
       ],

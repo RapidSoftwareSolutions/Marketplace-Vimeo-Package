@@ -12,6 +12,7 @@ class ApiRequestFacade
 
         $responseCode = isset($params['responseCode']) ? $params['responseCode'] : '200';
         unset($params['responseCode']);
+
         try {
             $requestFacade = new \Models\RequestFacade();
             $resp = $requestFacade->makeRequest(new Client(), $params, $post_data, $query_str, $reqType, $paramType);
