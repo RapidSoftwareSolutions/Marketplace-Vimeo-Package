@@ -15,7 +15,7 @@ $app->post('/api/Vimeo/categorizeVideo', function ($request, $response, $args) {
     $params = [
         'accessToken' => 'accessToken',
         'responseCode' => '201',
-        'categories'=> 'categories'
+        'categories'=> 'category'
     ];
     $result = \Models\ApiRequestFacade::makeRequest($params, $post_data, $query_str, 'PUT', 'json');
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);

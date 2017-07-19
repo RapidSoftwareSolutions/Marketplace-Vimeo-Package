@@ -12,7 +12,7 @@ $app->post('/api/Vimeo/getChannelsUserSubscribed', function ($request, $response
     }
     //forming request to vendor API
     $userId = isset($post_data['args']['userId']) ? 'users/' . $post_data['args']['userId'] : 'me';
-    $query_str = $settings['api_url'] . $userId . 'channels/';
+    $query_str = $settings['api_url'] . $userId . '/channels/';
     $params = [
         'accessToken' => 'accessToken',
         'direction' => 'direction',

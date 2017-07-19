@@ -588,7 +588,7 @@
           "required": true
         },
         {
-          "name": "videoId",
+          "name": "videoIds",
           "type": "List",
           "structure": {
             "name": "videoId",
@@ -749,9 +749,9 @@
           "required": true
         },
         {
-          "name": "categories",
+          "name": "category",
           "type": "String",
-          "info": "Id of the video",
+          "info": "Id of the category",
           "required": true
         }
       ],
@@ -1629,6 +1629,12 @@
           "name": "accessToken",
           "type": "String",
           "info": "Access token received from Vimeo",
+          "required": true
+        },
+        {
+          "name": "channelId",
+          "type": "String",
+          "info": "Id of the channel",
           "required": true
         },
         {
@@ -2959,7 +2965,7 @@
         },
         {
           "name": "tag",
-          "type": "String",
+          "type": "JSON",
           "info": "Tag to add",
           "required": true
         }
@@ -3355,7 +3361,7 @@
       ]
     },
     {
-      "name": "pictureId",
+      "name": "deleteUserPicture",
       "description": "Delete a users' picture",
       "args": [
         {
@@ -3652,13 +3658,8 @@
         },
         {
           "name": "userUris",
-          "type": "List",
-          "structure": {
-            "name": "userId",
-            "type": "String",
-            "info": "Single user id"
-          },
-          "info": "Id of the users to follow",
+          "type": "JSON",
+          "info": "Ids of the users to follow",
           "required": true
         },
         {
@@ -6745,12 +6746,7 @@
         },
         {
           "name": "userUris",
-          "type": "List",
-          "structure": {
-            "name": "userId",
-            "type": "String",
-            "info": "Single user id"
-          },
+          "type": "JSON",
           "info": "An array of either user URI's or user IDs.",
           "required": true
         },

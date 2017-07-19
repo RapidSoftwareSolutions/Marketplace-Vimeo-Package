@@ -1,14 +1,13 @@
 [![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/Vimeo/functions?utm_source=RapidAPIGitHub_VimeoFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
 
 # Vimeo Package
-Vimeo
+Vimeo is a video sharing platform that was launched in 2004 by a group of filmmakers.
 * Domain: [Vimeo](http://vimeo.com)
 * Credentials: clientId, clientSecret
 
 ## How to get credentials: 
-0. Go to  [Vimeo](http://vimeo.com)
-1. Register or log in
-2. Go to [App page](https://developer.vimeo.com/apps) to create your application and get credits
+0. Item one 
+1. Item two 
 
 
 
@@ -153,7 +152,7 @@ Clear or replace the videos in an album.
 |------------|-------|----------
 | accessToken| String| Access token received from Vimeo
 | albumId    | String| Id of the album
-| videoId    | List  | Id of the video
+| videoIds   | List  | Id of the video
 | userId     | String| Id of the user to act on behalf of (default  = me)
 
 ## Vimeo.deleteAlbum
@@ -191,7 +190,7 @@ Add up to two categories and a subcategory to a video. This is merely a suggesti
 |------------|-------|----------
 | accessToken| String| Access token received from Vimeo
 | videoId    | String| Id of the video
-| categories | String| Id of the video
+| category   | String| Id of the category
 
 ## Vimeo.checkForVideoInCategory
 Check for a video in a category
@@ -388,6 +387,7 @@ Get all followers of a channel
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token received from Vimeo
+| channelId  | String| Id of the channel
 | direction  | Select| The direction that the results are sorted.
 | sort       | Select| Technique used to sort the results.
 | page       | Number| The page number to show.
@@ -678,7 +678,7 @@ Add a tags to a video
 |------------|-------|----------
 | accessToken| String| Access token received from Vimeo
 | videoId    | String| Id of the video
-| tag        | String| Tag to add
+| tag        | JSON  | Tag to add
 
 ## Vimeo.checkTagAddedToVideo
 Check if a tag has been added to a video
@@ -775,7 +775,7 @@ Complete a users' streaming upload
 | videoFileId| String| The ID of the uploaded file.
 | userId     | String| Id of the user to act on behalf of (default  = me)
 
-## Vimeo.pictureId
+## Vimeo.deleteUserPicture
 Delete a users' picture
 
 | Field      | Type  | Description
@@ -845,7 +845,7 @@ Follow a list of users
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token received from Vimeo
-| userUris   | List  | Id of the users to follow
+| userUris   | JSON  | Ids of the users to follow
 | userId     | String| Id of the user to act on behalf of (default  = me)
 
 ## Vimeo.getUser
@@ -1529,7 +1529,7 @@ Allow a list of users to view a private video
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token received from Vimeo
-| userUris   | List  | An array of either user URI's or user IDs.
+| userUris   | JSON  | An array of either user URI's or user IDs.
 | videoId    | String| Id of the video
 
 ## Vimeo.allowSingleUserToViewPrivateVideo
