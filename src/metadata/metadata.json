@@ -7289,9 +7289,9 @@
           "required": true
         },
         {
-          "name": "commentId",
+          "name": "creditId",
           "type": "String",
-          "info": "Id of the comment",
+          "info": "Id of the credit",
           "required": true
         },
         {

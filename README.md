@@ -1673,7 +1673,7 @@ Edit a credit on a video
 | accessToken| String| Access token received from Vimeo
 | text       | String| Text of the comment
 | videoId    | String| Id of the video
-| commentId  | String| Id of the comment
+| creditId  | String| Id of the credit
 | email      | String| The email address of the person being credited.
 | name       | String| The name address of the person being credited.
 | role       | String| The role address of the person being credited.
