@@ -4,7 +4,7 @@ $app->post('/api/Vimeo/unfollowUser', function ($request, $response, $args) {
 
     //checking properly formed json
     $checkRequest = $this->validation;
-    $validateRes = $checkRequest->validate($request, ['accessToken', 'userId']);
+    $validateRes = $checkRequest->validate($request, ['accessToken', 'followUser']);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
         return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($validateRes);
     } else {
@@ -12,7 +12,7 @@ $app->post('/api/Vimeo/unfollowUser', function ($request, $response, $args) {
     }
     //forming request to vendor API
     $userId = !empty($post_data['args']['userId']) ? 'users/' . $post_data['args']['userId'] : 'me';
-    $query_str = $settings['api_url'] . $userId . '/following/'.$post_data['args']['userId'];
+    $query_str = $settings['api_url'] . $userId . '/following/'.$post_data['args']['followUser'];
 
     $params = [
         'accessToken' => 'accessToken',
