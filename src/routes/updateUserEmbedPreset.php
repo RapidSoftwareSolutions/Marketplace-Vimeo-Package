@@ -11,7 +11,7 @@ $app->post('/api/Vimeo/updateUserEmbedPreset', function ($request, $response, $a
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $userId = isset($post_data['args']['userId']) ? 'users/' . $post_data['args']['userId'] : 'me';
+    $userId = !empty($post_data['args']['userId']) ? 'users/' . $post_data['args']['userId'] : 'me';
     $query_str = $settings['api_url'] . $userId . '/presets/' . $post_data['args']['presetId'];
     $params = [
         'accessToken' => 'accessToken',

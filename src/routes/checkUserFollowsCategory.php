@@ -11,7 +11,7 @@ $app->post('/api/Vimeo/checkUserFollowsCategory', function ($request, $response,
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $userId = isset($post_data['args']['userId']) ? 'users/'.$post_data['args']['userId'] : 'me';
+    $userId = !empty($post_data['args']['userId']) ? 'users/'.$post_data['args']['userId'] : 'me';
     $query_str = $settings['api_url'] . $userId.'/categories/'.$post_data['args']['categoryName'] ;
     $params = [
         'accessToken' => 'accessToken',

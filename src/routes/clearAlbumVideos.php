@@ -14,7 +14,7 @@ $app->post('/api/Vimeo/clearAlbumVideos', function ($request, $response, $args) 
     $paramNames = ['videoIds'];
     $post_data = \Models\ParamsModifier::arrayToString($post_data, $paramNames);
 
-    $userId = isset($post_data['args']['userId']) ? 'users/' . $post_data['args']['userId'] : 'me';
+    $userId = !empty($post_data['args']['userId']) ? 'users/' . $post_data['args']['userId'] : 'me';
     $query_str = $settings['api_url'] . $userId . '/albums/' . $post_data['args']['albumId'] . '/videos/';
     $params = [
         'accessToken' => 'accessToken',
