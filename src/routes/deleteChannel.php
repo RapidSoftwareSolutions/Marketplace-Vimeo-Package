@@ -13,7 +13,8 @@ $app->post('/api/Vimeo/deleteChannel', function ($request, $response, $args) {
     //forming request to vendor API
     $query_str = $settings['api_url'] . 'channels/' . $post_data['args']['channelId'] ;
     $params = [
-        'accessToken' => 'accessToken'
+        'accessToken' => 'accessToken',
+        'responseCode' => '204'
     ];
     $result = \Models\ApiRequestFacade::makeRequest($params, $post_data, $query_str, 'DELETE');
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
