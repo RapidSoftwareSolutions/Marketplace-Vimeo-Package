@@ -4558,40 +4558,6 @@
       ]
     },
     {
-      "name": "addRegionToOnDemandPage",
-      "description": "Add a region to an On Demand page",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token received from Vimeo",
-          "required": true
-        },
-        {
-          "name": "ondemandId",
-          "type": "String",
-          "info": "Id of the ondemand page",
-          "required": true
-        },
-        {
-          "name": "country",
-          "type": "String",
-          "info": "Region to add",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
       "name": "addVideoToOnDemandPage",
       "description": "Add a video to an On Demand page",
       "args": [
